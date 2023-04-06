@@ -25,9 +25,8 @@ body{
 .container{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    /* grid-template-rows: repeat(3, 1fr); */
-    row-gap:15px;
+    /* grid-auto-rows: auto; */
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
     "header header header header"
     "sidebar main main ."
@@ -36,12 +35,11 @@ body{
 
 header{
     grid-area:header;
-    align-content: center;
     margin-left: auto;
     margin-right: auto;
 }
 header::after{
-    content:url("https://picsum.photos/1400/250")
+    content:url("https://picsum.photos/1200/275")
 }
 aside{
     grid-area:sidebar;
@@ -51,6 +49,13 @@ aside{
 main{
     grid-area:main;
     font-size: large;
+    margin-bottom: 10px;
+}
+.side-nav{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .navOne{
     grid-area: navOne;
@@ -66,13 +71,36 @@ main{
     grid-area: navFour;
 }
 
-li{
-    margin-top:20px;
+
+
+.footer{
+    height:60%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    /* border: 2px red solid; */
 }
 
-/* footer{
-    grid-area:footer;
-    display:flex;
-    justify-content: space-between;
-    padding:1rem 10rem 1rem 3rem;
-    } */
+@media(max-width:992px){
+    .navOne{
+        display:none;
+    }
+    aside{
+        display:none;
+    }
+    .container{
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+        /* grid-template-rows: repeat(3, 1fr); */
+        grid-template-areas:
+        "header header header"
+        "main main main"
+        "navTwo navThree navFour";
+    }
+    header::after{
+        content:url("https://picsum.photos/850/275")
+    }
+    main{
+        margin:0 20px 20px 20px;
+    }
+}
